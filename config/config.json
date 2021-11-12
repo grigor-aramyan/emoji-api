@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "emoji",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "emoji",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "nrrpnbdopwagid",
+    "password": "6a5ba8353cefe8011ce47b2f8368a6124372a1aa9338b85207c393ca5da438b1",
+    "database": "d2bfephdvakl99",
+    "host": "ec2-34-200-161-87.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "protocol":"postgres",
+    "native": false,
+    "ssl": true
+  }
+}
