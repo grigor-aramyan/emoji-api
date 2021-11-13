@@ -1,0 +1,43 @@
+<%- include('admin-header.ejs') -%>
+
+<div class="row" style="">
+    <%- include('admin-sidebar.ejs') -%>
+
+    <div class="col-9" style="overflow-x: hidden;padding-top:20px;padding-left: 20px;">
+        <a href="/admin/giftbox/new" class="btn-custom" style="">Add Giftbox</a>
+        <br />
+        <br />
+        <% if (giftboxes) { %>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Gender</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% giftboxes.forEach(function(gft) { %>
+                        <tr>
+                            <td>
+                                <img style="width: 100px;height: 100px;object-fit: contain;" src="<%= gft.img %>" />
+                            </td>
+                            <td><%= gft.id %></td>
+                            <td><%= gft.title %></td>
+                            <td><%= gft.size %></td>
+                            <td><%= gft.price %></td>
+                            <td><%= gft.gend %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <h5 style="text-align: center;">No giftboxes found!</h5>
+        <% } %>
+    </div>
+</div>
+
+<%- include('admin-footer.ejs') -%>

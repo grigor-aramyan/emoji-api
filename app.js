@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+// var bodyParser = require('body-parser')
 var logger = require('morgan');
 var cors = require('cors')
 
@@ -9,6 +10,8 @@ require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
+var adminRouter = require('./routes/admin');
+var giftboxRouter = require('./routes/giftbox');
 
 var app = express();
 app.use(cors())
@@ -19,16 +22,16 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-
+app.use('/admin', adminRouter);
+app.use('/api/giftbox', giftboxRouter);
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-
 
 
 // catch 404 and forward to error handler

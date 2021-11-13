@@ -1,8 +1,41 @@
-body {
+/* body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+} */
+
+.sidebar-custom li {
+  border: 2px solid silver;
+  padding: 10px;
+  border-radius: 50px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.sidebar-custom li a {
+  text-decoration: none;
+  color: brown;
+}
+
+.sidebar-custom li:hover {
+  background-color: silver;
+}
+
+.btn-custom {
+  color: whitesmoke;
+  background-color: purple;
+  border-radius: 20px;
+  padding: 10px;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.btn-custom:hover {
+  color: purple;
+  background-color: whitesmoke;
+  border: 1px solid purple;
+  border-radius: 20px;
 }
