@@ -16,6 +16,7 @@ var giftboxRouter = require('./routes/giftbox');
 var faqRouter = require('./routes/faq');
 var contactsRouter = require('./routes/contacts');
 var aboutRouter = require('./routes/about');
+var profileRouter = require('./routes/profile');
 
 var app = express();
 app.use(cors())
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(fileUpload());
 
 app.use('/admin', adminRouter);
+app.use('/api/profile', profileRouter);
 app.use('/api/contacts', contactsRouter);
 app.use('/api/about', aboutRouter);
 app.use('/api/giftbox', giftboxRouter);
