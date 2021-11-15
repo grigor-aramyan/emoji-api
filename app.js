@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 // var bodyParser = require('body-parser')
 var logger = require('morgan');
 var cors = require('cors')
-var fileUpload = require('express-fileupload')
+// var fileUpload = require('express-fileupload')
 
 require('dotenv').config();
 
@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(fileUpload());
+// app.use(fileUpload());
 
 app.use('/admin', adminRouter);
 app.use('/api/contacts', contactsRouter);
