@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 // var bodyParser = require('body-parser')
 var logger = require('morgan');
 var cors = require('cors')
+var fileUpload = require('express-fileupload')
 
 require('dotenv').config();
 
@@ -12,6 +13,7 @@ var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
 var adminRouter = require('./routes/admin');
 var giftboxRouter = require('./routes/giftbox');
+var faqRouter = require('./routes/faq');
 
 var app = express();
 app.use(cors())
@@ -26,10 +28,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use(fileUpload());
 
 app.use('/admin', adminRouter);
 app.use('/api/giftbox', giftboxRouter);
+app.use('/api/faq', faqRouter);
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 
