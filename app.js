@@ -17,6 +17,7 @@ var faqRouter = require('./routes/faq');
 var contactsRouter = require('./routes/contacts');
 var aboutRouter = require('./routes/about');
 var profileRouter = require('./routes/profile');
+var orderingRouter = require('./routes/ordering');
 
 var app = express();
 app.use(cors())
@@ -27,13 +28,14 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use(fileUpload());
 
 app.use('/admin', adminRouter);
+app.use('/api/ordering', orderingRouter);
 app.use('/api/profile', profileRouter);
 app.use('/api/contacts', contactsRouter);
 app.use('/api/about', aboutRouter);

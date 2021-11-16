@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       Giftbox.hasMany(models.Item, {
         foreignKey: 'giftbox_id',
         as: 'items',
-      })
+      });
+      Giftbox.hasMany(models.LineItem, {
+        foreignKey: 'giftbox_id',
+        as: 'line_items',
+      });
     }
   };
   Giftbox.init({
