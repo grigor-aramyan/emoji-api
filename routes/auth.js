@@ -84,6 +84,21 @@ router.post('/login', async function(req,res,next) {
     });
 });
 
+router.delete('/remove', auth, async function(req,res,next) {
+    const user = await User.findByPk(req.user_id);
+
+    if (!user) {
+        return res.json({
+            error: ['User not found']
+        });
+    }
+
+    await user.destroy();
+    return res.json({
+        msg: 'ok'
+    });
+});
+
 router.patch('/reset', auth, async function(req,res,next) {
     const user = await User.findByPk(req.user_id);
 
