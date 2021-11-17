@@ -84,6 +84,48 @@ router.post('/login', async function(req,res,next) {
     });
 });
 
+router.patch('/reset', auth, async function(req,res,next) {
+    const user = await User.findByPk(req.user_id);
+
+    if (!user) {
+        return res.json({
+            error: ['User not found']
+        });
+    }
+
+    const {
+        old_password,
+        new_password,
+    } = req.body;
+    if (!(old_password && new_password)) {
+        return res.json({
+            error: ['Both new and old passwords are required!']
+        });
+    }
+
+    const confirmed = await bcrypt.compare(old_password, user.password);
+    if (!confirmed) {
+        return res.json({
+            error: ['User with this password does not exist!']
+        });
+    }
+
+    const newEncryptedPassword = await bcrypt.hash(new_password, 10);
+    user.password = newEncryptedPassword;
+    try {
+        await user.save();
+    } catch (e) {
+        return res.json({
+            error: e.errors.map(i => i.message)
+        });
+    }
+
+    return res.json({
+        msg: 'ok'
+    });
+
+});
+
 router.get('/me', auth, async function(req,res,next) {
     const user = await User.findByPk(req.user_id);
     
